@@ -652,11 +652,14 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
           </div>
         </div>
         <form id="contactForm">
-          <div class="form-group"><label>Name</label><input type="text" required placeholder="Your name"></div>
-          <div class="form-group"><label>Email</label><input type="email" required placeholder="you@company.com"></div>
-          <div class="form-group"><label>Message</label><textarea required placeholder="Tell me about the role or project..."></textarea></div>
-          <button type="submit" class="form-submit">Send Message →</button>
-          <p class="form-note">This form is a front-end demo — please email me directly to guarantee a response.</p>
+          <input type="hidden" name="access_key" value="5026b789-e091-4798-a1df-64237bebf4ac">
+          <input type="hidden" name="subject" value="New message from portfolio site">
+          <input type="checkbox" name="botcheck" style="display:none">
+          <div class="form-group"><label>Name</label><input type="text" name="name" required placeholder="Your name"></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" required placeholder="you@company.com"></div>
+          <div class="form-group"><label>Message</label><textarea name="message" required placeholder="Tell me about the role or project..."></textarea></div>
+          <button type="submit" class="form-submit"><span class="btn-label">Send Message →</span></button>
+          <p class="form-note">Messages go straight to my inbox.</p>
         </form>
       </div>
     </div>
@@ -748,13 +751,36 @@ document.querySelectorAll('.skill-tab').forEach(tab=>{
 document.getElementById('backToTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
 // ---------- contact form ----------
-document.getElementById('contactForm').addEventListener('submit', e=>{
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', async (e)=>{
   e.preventDefault();
   const toast = document.getElementById('toast');
-  toast.textContent = "Thanks! Please email johangeorge1414@gmail.com directly — this demo form doesn't send.";
-  toast.classList.add('show');
-  setTimeout(()=> toast.classList.remove('show'), 3800);
-  e.target.reset();
+  const btn = contactForm.querySelector('.form-submit');
+  const label = btn.querySelector('.btn-label');
+  const originalLabel = label.textContent;
+  btn.disabled = true;
+  label.textContent = 'Sending...';
+  try{
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+    });
+    const data = await res.json();
+    if(data.success){
+      toast.textContent = "Message sent! I'll get back to you soon.";
+      contactForm.reset();
+    } else {
+      throw new Error(data.message || 'Send failed');
+    }
+  } catch(err){
+    toast.textContent = "Something went wrong — please email johangeorge1414@gmail.com directly.";
+  } finally {
+    toast.classList.add('show');
+    setTimeout(()=> toast.classList.remove('show'), 4200);
+    btn.disabled = false;
+    label.textContent = originalLabel;
+  }
 });
 
 // ---------- background particle canvas ----------
