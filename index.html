@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Johan George — Software Developer & QA Engineer</title>
+<title>Johan George — Aspiring Software Developer & QA Automation Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -155,6 +155,8 @@ section{position:relative; z-index:2; padding:150px 0 120px;}
 .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 34px -10px rgba(94,234,212,0.5);}
 .btn-ghost{background:transparent; color:var(--text); border:1px solid var(--panel-border);}
 .btn-ghost:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-3px);}
+.btn-outline-accent{background:rgba(94,234,212,0.06); color:var(--accent); border:1px solid rgba(94,234,212,0.35);}
+.btn-outline-accent:hover{transform:translateY(-3px); background:rgba(94,234,212,0.12); box-shadow:0 14px 30px -14px rgba(94,234,212,0.4);}
 .hero-stats{display:flex; gap:36px; flex-wrap:wrap;}
 .hero-stat b{display:block; font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700;}
 .hero-stat span{font-size:12.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:1px;}
@@ -220,23 +222,58 @@ section{position:relative; z-index:2; padding:150px 0 120px;}
 .hl-item p{font-size:13px; color:var(--text-faint); line-height:1.5;}
 
 /* ---------- skills ---------- */
-.skills-tabs{display:flex; gap:10px; margin-bottom:44px; flex-wrap:wrap;}
-.skill-tab{padding:10px 20px; border-radius:100px; border:1px solid var(--panel-border); font-size:13.5px; font-weight:500; color:var(--text-dim); cursor:pointer; transition:all .3s ease; font-family:'JetBrains Mono',monospace;}
-.skill-tab.active, .skill-tab:hover{border-color:var(--accent); color:var(--accent); background:rgba(94,234,212,0.06);}
-.skills-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:18px;}
-.skill-card{
-  background:var(--panel); border:1px solid var(--panel-border); border-radius:16px; padding:24px;
-  transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s ease, box-shadow .35s ease;
-  position:relative; overflow:hidden; cursor:default;
+.skill-groups{display:flex; flex-direction:column; gap:26px;}
+.skill-group{
+  background:var(--panel); border:1px solid var(--panel-border); border-radius:20px; padding:30px 32px;
+  transition:border-color .3s ease, transform .3s ease;
 }
-.skill-card:hover{transform:translateY(-8px) scale(1.015); border-color:var(--accent); box-shadow:0 20px 40px -20px rgba(94,234,212,0.35);}
-.skill-card .top-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
-.skill-card .icon-badge{width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:rgba(94,234,212,0.1); font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--accent); font-size:15px;}
-.skill-card .pct{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--text-faint);}
-.skill-card h4{font-size:16px; margin-bottom:12px;}
-.skill-bar{height:5px; border-radius:4px; background:rgba(255,255,255,0.06); overflow:hidden;}
-.skill-bar .fill{height:100%; border-radius:4px; background:var(--gradient); width:0%; transition:width 1.4s cubic-bezier(.16,1,.3,1);}
-.skill-card.hidden{display:none;}
+.skill-group:hover{border-color:var(--accent);}
+.skill-group-head{display:flex; align-items:center; gap:14px; margin-bottom:20px;}
+.skill-group-dot{width:11px; height:11px; border-radius:50%; flex-shrink:0;}
+.skill-group.strong .skill-group-dot{background:var(--accent); box-shadow:0 0 12px var(--accent);}
+.skill-group.comfortable .skill-group-dot{background:var(--accent2); box-shadow:0 0 12px var(--accent2);}
+.skill-group.learning .skill-group-dot{background:var(--accent3); box-shadow:0 0 12px var(--accent3);}
+.skill-group-head h4{font-size:17px; font-weight:600;}
+.skill-group-head span{font-size:12.5px; color:var(--text-faint); font-family:'JetBrains Mono',monospace;}
+.skill-chip-row{display:flex; flex-wrap:wrap; gap:10px;}
+.skill-chip{
+  display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:100px;
+  background:rgba(255,255,255,0.04); border:1px solid var(--panel-border); font-size:13.5px; font-weight:500;
+  transition:transform .25s ease, border-color .25s ease;
+}
+.skill-chip:hover{transform:translateY(-3px); border-color:var(--accent);}
+
+/* ---------- mock screenshot visual ---------- */
+.mock-window{width:100%; height:100%; display:flex; flex-direction:column; background:var(--bg-alt);}
+.mock-titlebar{display:flex; align-items:center; gap:6px; padding:9px 12px; border-bottom:1px solid var(--panel-border); background:rgba(255,255,255,0.02);}
+.mock-dot{width:8px; height:8px; border-radius:50%;}
+.mock-dot:nth-child(1){background:#f47272;} .mock-dot:nth-child(2){background:#f4c542;} .mock-dot:nth-child(3){background:#5eead4;}
+.mock-titlebar span{margin-left:8px; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--text-faint);}
+.mock-body{flex:1; padding:16px 18px; display:flex; flex-direction:column; gap:8px; justify-content:center;}
+.mock-line{height:8px; border-radius:4px; background:rgba(255,255,255,0.08);}
+.mock-search{display:flex; align-items:center; gap:8px; background:rgba(94,234,212,0.08); border:1px solid rgba(94,234,212,0.3); border-radius:8px; padding:8px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent);}
+.mock-card-row{display:flex; gap:8px;}
+.mock-card-row .mock-tile{flex:1; height:34px; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid var(--panel-border);}
+.mock-terminal{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--accent); line-height:1.7;}
+.mock-terminal .dim{color:var(--text-faint);}
+
+/* ---------- featured project ---------- */
+.featured-project{
+  background:var(--panel); border:1px solid var(--panel-border); border-radius:28px; overflow:hidden; margin-bottom:70px;
+  display:grid; grid-template-columns:1fr 1fr; position:relative;
+}
+.featured-project::before{content:''; position:absolute; width:340px; height:340px; background:var(--gradient); filter:blur(130px); opacity:.15; top:-120px; right:-80px; pointer-events:none;}
+.featured-visual{position:relative; min-height:380px; background:linear-gradient(135deg,rgba(94,234,212,0.1),rgba(129,140,248,0.1)); border-right:1px solid var(--panel-border); display:flex; align-items:center; justify-content:center; padding:30px;}
+.featured-visual .mock-frame{width:100%; max-width:340px; aspect-ratio:9/16; border-radius:20px; border:1px solid var(--panel-border); overflow:hidden; box-shadow:0 30px 70px -30px rgba(0,0,0,0.7);}
+.featured-body{padding:44px 46px; display:flex; flex-direction:column; position:relative; z-index:1;}
+.featured-label{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:14px;}
+.featured-body h3{font-size:28px; margin-bottom:14px; letter-spacing:-0.5px;}
+.featured-body > p{color:var(--text-dim); font-size:15.5px; line-height:1.75; margin-bottom:26px;}
+.featured-cols{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:26px;}
+.featured-col h5{font-size:12.5px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-faint); margin-bottom:8px; font-family:'JetBrains Mono',monospace;}
+.featured-col p{font-size:14px; color:var(--text-dim); line-height:1.6;}
+.featured-project .tech-pills{margin-bottom:26px;}
+.featured-project .project-links{margin-top:auto;}
 
 /* ---------- projects ---------- */
 .projects-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px;}
@@ -247,13 +284,11 @@ section{position:relative; z-index:2; padding:150px 0 120px;}
 }
 .project-card:hover{transform:translateY(-8px); border-color:rgba(94,234,212,0.4); box-shadow:0 30px 60px -25px rgba(0,0,0,0.6);}
 .project-visual{
-  height:180px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden;
+  height:170px; position:relative; display:flex; overflow:hidden;
   background:linear-gradient(135deg,rgba(94,234,212,0.12),rgba(129,140,248,0.12));
-  border-bottom:1px solid var(--panel-border);
+  border-bottom:1px solid var(--panel-border); transition:transform .4s ease;
 }
-.project-visual .glyph{font-family:'JetBrains Mono',monospace; font-size:46px; font-weight:700; color:var(--text); opacity:.15; transition:transform .5s ease, opacity .5s ease;}
-.project-card:hover .project-visual .glyph{transform:scale(1.15) rotate(-4deg); opacity:.28;}
-.project-visual .grid-overlay{position:absolute; inset:0; background-image:linear-gradient(var(--panel-border) 1px,transparent 1px),linear-gradient(90deg,var(--panel-border) 1px,transparent 1px); background-size:22px 22px; opacity:.5;}
+.project-card:hover .project-visual{transform:scale(1.02);}
 .project-body{padding:26px 26px 28px; display:flex; flex-direction:column; flex:1;}
 .project-body .ptag{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;}
 .project-body h3{font-size:20px; margin-bottom:10px;}
@@ -263,9 +298,12 @@ section{position:relative; z-index:2; padding:150px 0 120px;}
 .project-feats{list-style:none; margin-bottom:20px;}
 .project-feats li{font-size:13px; color:var(--text-faint); padding-left:18px; position:relative; margin-bottom:7px; line-height:1.5;}
 .project-feats li::before{content:'▹'; position:absolute; left:0; color:var(--accent);}
-.project-links{display:flex; gap:12px; margin-top:auto;}
-.project-links a{font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px; color:var(--text); padding:9px 16px; border-radius:100px; border:1px solid var(--panel-border); transition:all .25s ease;}
+.project-links{display:flex; gap:10px; margin-top:auto; flex-wrap:wrap;}
+.project-links a{font-size:12.5px; font-weight:600; display:flex; align-items:center; gap:6px; color:var(--text); padding:9px 14px; border-radius:100px; border:1px solid var(--panel-border); transition:all .25s ease;}
 .project-links a:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px);}
+.project-links a.link-primary{background:rgba(94,234,212,0.08); border-color:rgba(94,234,212,0.3); color:var(--accent);}
+.project-impact{background:rgba(94,234,212,0.05); border-left:2px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:18px;}
+.project-impact b{color:var(--text);}
 
 /* ---------- experience timeline ---------- */
 .timeline{position:relative; max-width:900px; margin:0 auto; padding-left:4px;}
@@ -283,6 +321,13 @@ section{position:relative; z-index:2; padding:150px 0 120px;}
 .tl-card ul li{font-size:14.5px; color:var(--text-dim); padding-left:20px; position:relative; margin-bottom:9px; line-height:1.6;}
 .tl-card ul li::before{content:'→'; position:absolute; left:0; color:var(--accent);}
 .tl-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+
+/* ---------- how i test ---------- */
+.test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+.test-item{background:var(--panel); border:1px solid var(--panel-border); border-radius:16px; padding:22px; display:flex; gap:14px; align-items:flex-start; transition:transform .3s ease, border-color .3s ease;}
+.test-item:hover{transform:translateY(-4px); border-color:var(--accent);}
+.test-item .check{width:26px; height:26px; border-radius:8px; background:rgba(94,234,212,0.12); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;}
+.test-item p{font-size:14px; color:var(--text-dim); line-height:1.55;}
 
 /* ---------- why hire me ---------- */
 .hire-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
@@ -340,6 +385,11 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
   .orbit-scene{width:280px; height:280px; transform:scale(.85);}
   .about-grid{grid-template-columns:1fr;}
   .projects-grid{grid-template-columns:1fr;}
+  .featured-project{grid-template-columns:1fr;}
+  .featured-visual{border-right:none; border-bottom:1px solid var(--panel-border);}
+  .featured-body{padding:34px 28px;}
+  .featured-cols{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr 1fr;}
   .hire-grid{grid-template-columns:1fr 1fr;}
   .contact-grid{grid-template-columns:1fr; gap:40px;}
   .contact-shell{padding:36px 26px;}
@@ -352,8 +402,10 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
   .orbit-scene{width:230px; height:230px; transform:scale(.8);}
   .scroll-hint{display:none;}
   .hire-grid{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr;}
   .about-highlights{grid-template-columns:1fr;}
   .hero-stats{gap:24px;}
+  .skill-group{padding:24px 20px;}
 }
 </style>
 </head>
@@ -376,6 +428,7 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
     <a href="#hire" class="nav-link">Why Me</a>
     <a href="#contact" class="nav-link">Contact</a>
   </div>
+  <a href="Johan_George_Resume.pdf" class="theme-toggle" title="Download Resume" download style="font-size:13px;">⬇</a>
   <div class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</div>
   <div class="nav-mobile-toggle" id="mobileToggle">☰</div>
 </nav>
@@ -388,20 +441,22 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
   <a href="#experience" class="drawer-link">Experience</a>
   <a href="#hire" class="drawer-link">Why Me</a>
   <a href="#contact" class="drawer-link">Contact</a>
+  <a href="Johan_George_Resume.pdf" class="drawer-link" download style="font-size:18px; color:var(--accent);">⬇ Resume</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="hero-eyebrow"><span class="dot"></span> Open to Internship &amp; Entry‑Level Roles</div>
+      <div class="hero-eyebrow"><span class="dot"></span> Aspiring Software Developer / QA Automation Engineer</div>
       <h1>
         <div class="line"><span>Hi, I'm Johan —</span></div>
         <div class="line"><span class="grad">I build &amp; break software.</span></div>
       </h1>
-      <p class="hero-tagline">Computer Science student turned software builder, with a Marine Corps background in precision diagnostics. I write code that works and testing that finds what doesn't<span class="type-cursor"></span></p>
+      <p class="hero-tagline">CS student focused on software development, QA, and reliable systems — with a Marine Corps background in precision diagnostics. I write code that works and testing that finds what doesn't<span class="type-cursor"></span></p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View My Work →</a>
+        <a href="Johan_George_Resume.pdf" class="btn btn-outline-accent" download>⬇ Download Resume</a>
         <a href="#contact" class="btn btn-ghost">Let's Talk</a>
       </div>
       <div class="hero-stats">
@@ -460,27 +515,52 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
   <div class="wrap">
     <span class="section-tag reveal">Capabilities</span>
     <h2 class="section-title reveal reveal-d1">Skills that ship reliable software.</h2>
-    <p class="section-sub reveal reveal-d2">Languages, tools, and concepts I use to build, test, and troubleshoot real applications.</p>
+    <p class="section-sub reveal reveal-d2">Rated honestly by confidence level, not arbitrary percentages — languages, tools, and concepts I use to build, test, and troubleshoot real applications.</p>
 
-    <div class="skills-tabs reveal">
-      <div class="skill-tab active" data-filter="all">All</div>
-      <div class="skill-tab" data-filter="lang">Languages</div>
-      <div class="skill-tab" data-filter="tools">Tools</div>
-      <div class="skill-tab" data-filter="concepts">Concepts</div>
+    <div class="skill-groups">
+      <div class="skill-group strong reveal">
+        <div class="skill-group-head"><span class="skill-group-dot"></span><h4>Strong</h4><span>— I build with these confidently and consistently</span></div>
+        <div class="skill-chip-row">
+          <span class="skill-chip">☕ Java</span>
+          <span class="skill-chip">🐍 Python</span>
+          <span class="skill-chip">🌐 HTML &amp; CSS</span>
+          <span class="skill-chip">🎯 Object-Oriented Design</span>
+          <span class="skill-chip">🐞 Debugging</span>
+        </div>
+      </div>
+      <div class="skill-group comfortable reveal reveal-d1">
+        <div class="skill-group-head"><span class="skill-group-dot"></span><h4>Comfortable</h4><span>— productive and improving fast</span></div>
+        <div class="skill-chip-row">
+          <span class="skill-chip">JS JavaScript</span>
+          <span class="skill-chip">⌥ Git &amp; GitHub</span>
+          <span class="skill-chip">🖥️ VS Code</span>
+          <span class="skill-chip">🧪 QA / Problem Solving</span>
+        </div>
+      </div>
+      <div class="skill-group learning reveal reveal-d2">
+        <div class="skill-group-head"><span class="skill-group-dot"></span><h4>Learning / Building With</h4><span>— actively growing here</span></div>
+        <div class="skill-chip-row">
+          <span class="skill-chip">C++ C++</span>
+          <span class="skill-chip">🎮 Unreal Engine</span>
+          <span class="skill-chip">🤖 AI-assisted development workflow</span>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="skills-grid">
-      <div class="skill-card reveal" data-cat="lang"><div class="top-row"><div class="icon-badge">J</div><span class="pct">92%</span></div><h4>Java</h4><div class="skill-bar"><div class="fill" data-pct="92"></div></div></div>
-      <div class="skill-card reveal" data-cat="lang"><div class="top-row"><div class="icon-badge">C++</div><span class="pct">78%</span></div><h4>C++</h4><div class="skill-bar"><div class="fill" data-pct="78"></div></div></div>
-      <div class="skill-card reveal" data-cat="lang"><div class="top-row"><div class="icon-badge">Py</div><span class="pct">85%</span></div><h4>Python</h4><div class="skill-bar"><div class="fill" data-pct="85"></div></div></div>
-      <div class="skill-card reveal" data-cat="lang"><div class="top-row"><div class="icon-badge">JS</div><span class="pct">82%</span></div><h4>JavaScript</h4><div class="skill-bar"><div class="fill" data-pct="82"></div></div></div>
-      <div class="skill-card reveal" data-cat="lang"><div class="top-row"><div class="icon-badge">H5</div><span class="pct">88%</span></div><h4>HTML &amp; CSS</h4><div class="skill-bar"><div class="fill" data-pct="88"></div></div></div>
-      <div class="skill-card reveal" data-cat="tools"><div class="top-row"><div class="icon-badge">Git</div><span class="pct">80%</span></div><h4>Git &amp; GitHub</h4><div class="skill-bar"><div class="fill" data-pct="80"></div></div></div>
-      <div class="skill-card reveal" data-cat="tools"><div class="top-row"><div class="icon-badge">VS</div><span class="pct">90%</span></div><h4>VS Code</h4><div class="skill-bar"><div class="fill" data-pct="90"></div></div></div>
-      <div class="skill-card reveal" data-cat="tools"><div class="top-row"><div class="icon-badge">AI</div><span class="pct">86%</span></div><h4>Claude / AI Tooling</h4><div class="skill-bar"><div class="fill" data-pct="86"></div></div></div>
-      <div class="skill-card reveal" data-cat="concepts"><div class="top-row"><div class="icon-badge">OOP</div><span class="pct">88%</span></div><h4>Object-Oriented Design</h4><div class="skill-bar"><div class="fill" data-pct="88"></div></div></div>
-      <div class="skill-card reveal" data-cat="concepts"><div class="top-row"><div class="icon-badge">🐞</div><span class="pct">90%</span></div><h4>Debugging</h4><div class="skill-bar"><div class="fill" data-pct="90"></div></div></div>
-      <div class="skill-card reveal" data-cat="concepts"><div class="top-row"><div class="icon-badge">QA</div><span class="pct">87%</span></div><h4>Problem Solving / QA</h4><div class="skill-bar"><div class="fill" data-pct="87"></div></div></div>
+<!-- CURRENTLY LEARNING -->
+<section id="learning">
+  <div class="wrap">
+    <span class="section-tag reveal">Always Growing</span>
+    <h2 class="section-title reveal reveal-d1">Currently learning.</h2>
+    <p class="section-sub reveal reveal-d2">A living list — what I'm actively studying and building toward right now.</p>
+    <div class="skill-chip-row reveal reveal-d3">
+      <span class="skill-chip">🧩 Data Structures &amp; Algorithms</span>
+      <span class="skill-chip">🤖 Test Automation</span>
+      <span class="skill-chip">⚛️ React</span>
+      <span class="skill-chip">🔌 Backend APIs</span>
+      <span class="skill-chip">🔐 Cybersecurity Fundamentals</span>
     </div>
   </div>
 </section>
@@ -492,69 +572,166 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
     <h2 class="section-title reveal reveal-d1">Projects built to solve real problems.</h2>
     <p class="section-sub reveal reveal-d2">A mix of systems programming, applied scripting, and full front-end builds — each one debugged, refined, and shipped.</p>
 
+    <!-- FEATURED PROJECT -->
+    <div class="featured-project reveal">
+      <div class="featured-visual">
+        <div class="mock-frame">
+          <div class="mock-window">
+            <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span>seating-lookup.app</span></div>
+            <div class="mock-body">
+              <div class="mock-search">🔍 Search guest name…</div>
+              <div class="mock-line" style="width:70%"></div>
+              <div class="mock-line" style="width:45%"></div>
+              <div class="mock-card-row"><div class="mock-tile"></div><div class="mock-tile"></div></div>
+              <div class="mock-line" style="width:60%; background:rgba(94,234,212,0.35);"></div>
+              <div class="mock-terminal" style="margin-top:10px;">&gt; guest: "Maria S." <span class="dim">// found</span><br>&gt; table: <b style="color:var(--accent)">12</b> <span class="dim">// 4ms lookup</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-body">
+        <div class="featured-label">★ Featured Project</div>
+        <h3>Wedding Seating Chart App</h3>
+        <p>Built a mobile-first guest lookup tool for a live wedding event. Guests scanned a QR code at the door, searched their name, and found their assigned table instantly — no line, no printed chart to scan by eye.</p>
+        <div class="featured-cols">
+          <div class="featured-col">
+            <h5>Problem</h5>
+            <p>Printed seating charts create bottlenecks at the door and are hard to update last-minute when tables change.</p>
+          </div>
+          <div class="featured-col">
+            <h5>Solution</h5>
+            <p>A responsive web app with real-time name search, reachable instantly via a QR code placed at the entrance.</p>
+          </div>
+        </div>
+        <div class="tech-pills"><span class="tech-pill">JavaScript</span><span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">QR Entry</span><span class="tech-pill">Mobile-First</span></div>
+        <div class="project-impact"><b>Result:</b> Used live at a real wedding — guests found their table in seconds via phone instead of queuing at a printed chart.</div>
+        <div class="project-links">
+          <a href="https://github.com/Pl4sm434" target="_blank" rel="noopener" class="link-primary">GitHub Repo ↗</a>
+          <a href="#contact">Read Case Study ↗</a>
+        </div>
+      </div>
+    </div>
+
     <div class="projects-grid">
       <div class="project-card reveal">
-        <div class="project-visual"><div class="grid-overlay"></div><div class="glyph">JAVA</div></div>
+        <div class="project-visual">
+          <div class="mock-window">
+            <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span>~/java-capstone</span></div>
+            <div class="mock-body">
+              <div class="mock-terminal">
+                <span class="dim">$</span> java -cp bin GameLauncher<br>
+                <span class="dim">></span> Loading Level<span style="color:var(--accent2)">.class</span>… OK<br>
+                <span class="dim">></span> Player <span style="color:var(--accent)">HP:100</span> Inventory: 3 items<br>
+                <span class="dim">></span> Projectile system <span style="color:var(--accent)">ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="project-body">
           <div class="ptag">Systems / OOP</div>
           <h3>Java Game Capstone</h3>
           <p>A multi-class Java application built around interconnected game systems — Player, Level, Inventory, and Projectile — designed for extensibility and clean module boundaries.</p>
           <div class="tech-pills"><span class="tech-pill">Java</span><span class="tech-pill">OOP</span><span class="tech-pill">CLI</span></div>
           <ul class="project-feats">
-            <li>Modular Player, Level, Inventory &amp; Projectile systems</li>
-            <li>Resolved classpath &amp; resource-loading runtime errors</li>
-            <li>Organized into clear modules for fast iteration</li>
-            <li>Runs cleanly via Java CLI with proper env setup</li>
+            <li>Designed modular Player, Level, Inventory &amp; Projectile classes so new game systems can be added without touching existing code</li>
+            <li>Diagnosed and fixed classpath &amp; resource-loading runtime errors that were breaking builds</li>
+            <li>Organized files into clear modules, cutting the time to locate and update logic</li>
+            <li>Runs cleanly via Java CLI with proper environment/classpath setup</li>
           </ul>
-          <div class="project-links"><a href="https://github.com/Pl4sm434" target="_blank" rel="noopener">GitHub ↗</a></div>
+          <div class="project-links">
+            <a href="https://github.com/Pl4sm434" target="_blank" rel="noopener" class="link-primary">GitHub ↗</a>
+            <a href="#contact">Case Study ↗</a>
+          </div>
         </div>
       </div>
 
       <div class="project-card reveal reveal-d1">
-        <div class="project-visual"><div class="grid-overlay"></div><div class="glyph">JS</div></div>
+        <div class="project-visual">
+          <div class="mock-window">
+            <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span>order-processor.py</span></div>
+            <div class="mock-body">
+              <div class="mock-terminal">
+                <span class="dim">$</span> python process_orders.py orders.csv<br>
+                <span class="dim">></span> Parsed <span style="color:var(--accent)">184</span> rows<br>
+                <span class="dim">></span> Total revenue: <span style="color:var(--accent)">$12,430.50</span><br>
+                <span class="dim">></span> Summary written <span style="color:var(--accent)">✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="project-body">
-          <div class="ptag">Web App</div>
-          <h3>Wedding Seating Chart App</h3>
-          <p>A responsive real-world event tool that lets guests search their name and instantly find their table — built for live use with QR code entry at the door.</p>
-          <div class="tech-pills"><span class="tech-pill">JavaScript</span><span class="tech-pill">HTML</span><span class="tech-pill">CSS</span></div>
+          <div class="ptag">Automation / Scripting</div>
+          <h3>CSV Order Processing Program</h3>
+          <p>A Python script built to replace manual line-by-line order tallying — ingests raw order CSV exports, validates and totals every line item, and outputs a clean summary ready for review.</p>
+          <div class="tech-pills"><span class="tech-pill">Python</span><span class="tech-pill">CSV</span><span class="tech-pill">Automation</span></div>
           <ul class="project-feats">
-            <li>Real-time guest name search &amp; lookup</li>
-            <li>Mobile-first layout for on-site event use</li>
-            <li>QR code entry point for fast guest access</li>
+            <li>Automated totals for bulk order exports that previously had to be tallied by hand, cutting manual review time</li>
+            <li>Function-based structure keeps parsing, calculation, and output logic independently testable</li>
+            <li>Produces a clean, human-readable summary for fast sign-off</li>
           </ul>
-          <div class="project-links"><a href="https://github.com/Pl4sm434" target="_blank" rel="noopener">GitHub ↗</a></div>
+          <div class="project-links">
+            <a href="https://github.com/Pl4sm434" target="_blank" rel="noopener" class="link-primary">GitHub ↗</a>
+            <a href="#contact">Case Study ↗</a>
+          </div>
         </div>
       </div>
 
       <div class="project-card reveal reveal-d2">
-        <div class="project-visual"><div class="grid-overlay"></div><div class="glyph">PY</div></div>
+        <div class="project-visual">
+          <div class="mock-window">
+            <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span>pw-strength.py</span></div>
+            <div class="mock-body">
+              <div class="mock-terminal">
+                <span class="dim">$</span> Enter password: ********<br>
+                <span class="dim">></span> Strength: <span style="color:var(--accent3)">Weak</span><br>
+                <span class="dim">></span> Tip: add a symbol + uppercase<br>
+                <span class="dim">></span> Retry: <span style="color:var(--accent)">Strong ✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="project-body">
-          <div class="ptag">Automation / Scripting</div>
-          <h3>CSV Order Processing Program</h3>
-          <p>A Python script that ingests raw order CSV files, calculates totals, and produces a clean, readable summary — built for speed and clarity.</p>
-          <div class="tech-pills"><span class="tech-pill">Python</span><span class="tech-pill">CSV</span><span class="tech-pill">Automation</span></div>
+          <div class="ptag">Security Tool</div>
+          <h3>Password Strength Checker</h3>
+          <p>A Python tool that scores password strength based on length and character composition, then gives users specific, actionable feedback instead of a generic pass/fail.</p>
+          <div class="tech-pills"><span class="tech-pill">Python</span><span class="tech-pill">Security</span></div>
           <ul class="project-feats">
-            <li>Parses order files and computes accurate totals</li>
-            <li>Function-based structure for readability</li>
-            <li>Clean summary output for quick review</li>
+            <li>Checks upper/lowercase, digit, and symbol mix to score real password strength, not just length</li>
+            <li>Gives targeted tips (e.g. "add a symbol") so users know exactly what to fix</li>
+            <li>Built with edge cases in mind — empty input, all-numeric, repeated characters</li>
           </ul>
-          <div class="project-links"><a href="https://github.com/Pl4sm434" target="_blank" rel="noopener">GitHub ↗</a></div>
+          <div class="project-links">
+            <a href="https://github.com/Pl4sm434" target="_blank" rel="noopener" class="link-primary">GitHub ↗</a>
+            <a href="#contact">Case Study ↗</a>
+          </div>
         </div>
       </div>
 
       <div class="project-card reveal reveal-d3">
-        <div class="project-visual"><div class="grid-overlay"></div><div class="glyph">SEC</div></div>
+        <div class="project-visual">
+          <div class="mock-window">
+            <div class="mock-titlebar"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span><span>seating-app</span></div>
+            <div class="mock-body">
+              <div class="mock-search">🔍 Guest name…</div>
+              <div class="mock-card-row"><div class="mock-tile"></div><div class="mock-tile"></div></div>
+              <div class="mock-line" style="width:55%"></div>
+            </div>
+          </div>
+        </div>
         <div class="project-body">
-          <div class="ptag">Security Tool</div>
-          <h3>Password Strength Checker</h3>
-          <p>A Python tool that scores password strength based on length and character composition, then gives users actionable feedback to strengthen weak passwords.</p>
-          <div class="tech-pills"><span class="tech-pill">Python</span><span class="tech-pill">Security</span></div>
+          <div class="ptag">Web App</div>
+          <h3>Wedding Seating Chart App</h3>
+          <p>The full-detail version is above as this portfolio's Featured Project — a mobile-first guest lookup tool used live at a real wedding, with QR code entry and instant name search.</p>
+          <div class="tech-pills"><span class="tech-pill">JavaScript</span><span class="tech-pill">HTML</span><span class="tech-pill">CSS</span></div>
           <ul class="project-feats">
-            <li>Checks upper/lowercase, digits &amp; symbol mix</li>
-            <li>Length-based strength scoring logic</li>
-            <li>Actionable tips to improve weak passwords</li>
+            <li>Helped guests instantly find their table through a mobile QR-based search flow during a live event</li>
+            <li>Mobile-first layout built for one-handed use at a crowded entrance</li>
+            <li>Real-time search implemented in vanilla JavaScript, no framework overhead</li>
           </ul>
-          <div class="project-links"><a href="https://github.com/Pl4sm434" target="_blank" rel="noopener">GitHub ↗</a></div>
+          <div class="project-links">
+            <a href="https://github.com/Pl4sm434" target="_blank" rel="noopener" class="link-primary">GitHub ↗</a>
+            <a href="#contact">Case Study ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -573,30 +750,15 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
         <div class="tl-dot"></div>
         <div class="tl-card">
           <span class="tl-date">JUNE 2023 — PRESENT</span>
-          <h3>Engineer Equipment Electrical System Technician</h3>
-          <div class="tl-org">United States Marine Corps</div>
+          <h3>Engineer Equipment Electrical Systems Technician / HVAC Technician</h3>
+          <div class="tl-org">United States Marine Corps Reserve</div>
           <ul>
-            <li>Diagnosed and resolved electrical &amp; mechanical issues, cutting equipment downtime by 20%</li>
-            <li>Ran systematic diagnostics and circuit checks to isolate root-cause failures</li>
-            <li>Trained fellow Marines on equipment operation and preventive maintenance</li>
-            <li>Operated in fast-moving, high-stakes environments requiring quick, accurate problem-solving</li>
+            <li><strong>Diagnostics:</strong> Diagnosed and resolved electrical &amp; mechanical issues, cutting equipment downtime by 20% through systematic circuit checks and root-cause analysis</li>
+            <li><strong>Maintenance:</strong> Installed and serviced HVAC systems, boosting system output through careful inspection and repair cycles</li>
+            <li><strong>Training:</strong> Taught fellow Marines how to operate and maintain equipment, building repeatable procedures others could follow</li>
+            <li><strong>Safety:</strong> Maintained strict compliance with safety protocols across every job, in fast-moving environments where mistakes weren't an option</li>
           </ul>
-          <div class="tl-tags"><span class="badge">Diagnostics</span><span class="badge">Root-Cause Analysis</span><span class="badge">Training</span></div>
-        </div>
-      </div>
-
-      <div class="tl-item reveal reveal-d1">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <span class="tl-date">JUNE 2023 — PRESENT</span>
-          <h3>HVAC Technician</h3>
-          <div class="tl-org">United States Marine Corps Reserves</div>
-          <ul>
-            <li>Installed and serviced HVAC systems to maintain steady, reliable performance</li>
-            <li>Boosted system output through careful inspection and repair cycles</li>
-            <li>Maintained strict compliance with safety protocols on every job</li>
-          </ul>
-          <div class="tl-tags"><span class="badge">Systems Maintenance</span><span class="badge">EPA 608 Certified</span><span class="badge">Safety Compliance</span></div>
+          <div class="tl-tags"><span class="badge">Diagnostics</span><span class="badge">Root-Cause Analysis</span><span class="badge">EPA 608 Certified</span><span class="badge">Training</span><span class="badge">Safety Compliance</span></div>
         </div>
       </div>
 
@@ -608,11 +770,29 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
           <div class="tl-org">De Anza College</div>
           <ul>
             <li>Building a foundation across Java, C++, Python, and web technologies</li>
+            <li>Coursework focus areas: Object-Oriented Programming, Data Structures, Web Development</li>
             <li>Applying coursework through self-directed capstone &amp; utility projects</li>
           </ul>
           <div class="tl-tags"><span class="badge">CS Coursework</span><span class="badge">Applied Projects</span></div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I TEST -->
+<section id="how-i-test">
+  <div class="wrap">
+    <span class="section-tag reveal">QA Identity</span>
+    <h2 class="section-title reveal reveal-d1">How I test.</h2>
+    <p class="section-sub reveal reveal-d2">Testing isn't a phase I do after building — it's how I think while I build.</p>
+    <div class="test-grid">
+      <div class="test-item reveal"><div class="check">✓</div><p>Write edge-case test scenarios before assuming the happy path works</p></div>
+      <div class="test-item reveal reveal-d1"><div class="check">✓</div><p>Validate form inputs and error states, not just successful submissions</p></div>
+      <div class="test-item reveal reveal-d2"><div class="check">✓</div><p>Test mobile responsiveness across real breakpoints, not just desktop</p></div>
+      <div class="test-item reveal"><div class="check">✓</div><p>Reproduce and document bugs clearly so they're fixable, not just reportable</p></div>
+      <div class="test-item reveal reveal-d1"><div class="check">✓</div><p>Think through full user flows before writing a single line of code</p></div>
+      <div class="test-item reveal reveal-d2"><div class="check">✓</div><p>Track defects with GitHub issues or checklists instead of relying on memory</p></div>
     </div>
   </div>
 </section>
@@ -625,12 +805,12 @@ footer{padding:40px 0; border-top:1px solid var(--panel-border); position:relati
     <p class="section-sub reveal reveal-d2">I bring a rare combination: real-world technical discipline from the Marine Corps, paired with a genuine, growing command of modern software development.</p>
 
     <div class="hire-grid">
-      <div class="hire-card reveal"><div class="num">01</div><div class="icon">🔍</div><h3>Detail-Obsessed</h3><p>Trained to catch small failures before they become big ones — a habit that carries directly into code review and QA.</p></div>
-      <div class="hire-card reveal reveal-d1"><div class="num">02</div><div class="icon">🧪</div><h3>Testing Mindset</h3><p>I don't just write code — I try to break it first, the same way I'd stress-test a piece of field equipment.</p></div>
-      <div class="hire-card reveal reveal-d2"><div class="num">03</div><div class="icon">🐛</div><h3>Bug-Finder Instinct</h3><p>Root-cause diagnostics is muscle memory for me — I trace problems back to their source instead of patching symptoms.</p></div>
-      <div class="hire-card reveal reveal-d3"><div class="num">04</div><div class="icon">🎯</div><h3>User-Focused</h3><p>Every project I've built — from a seating-chart app to a password checker — was designed around real people actually using it.</p></div>
-      <div class="hire-card reveal"><div class="num">05</div><div class="icon">⚙️</div><h3>Reliable Under Pressure</h3><p>I've operated in fast-moving, high-stakes environments where things had to work — and worked to make that happen.</p></div>
-      <div class="hire-card reveal reveal-d1"><div class="num">06</div><div class="icon">🚀</div><h3>Fast, Self-Driven Learner</h3><p>Self-taught Java, C++, JavaScript, and Unreal Engine outside the classroom — I close skill gaps quickly and on my own.</p></div>
+      <div class="hire-card reveal"><div class="num">01</div><div class="icon">🔍</div><h3>Detail-Obsessed</h3><p>I catch small issues early — which helps teams avoid bugs reaching users and cuts down late-stage rework.</p></div>
+      <div class="hire-card reveal reveal-d1"><div class="num">02</div><div class="icon">🧪</div><h3>Testing Mindset</h3><p>I try to break what I build before a user does, so your team ships with fewer surprises in production.</p></div>
+      <div class="hire-card reveal reveal-d2"><div class="num">03</div><div class="icon">🐛</div><h3>Bug-Finder Instinct</h3><p>I trace problems to their root cause instead of patching symptoms — meaning fixes actually stay fixed.</p></div>
+      <div class="hire-card reveal reveal-d3"><div class="num">04</div><div class="icon">🎯</div><h3>User-Focused</h3><p>Every project I've built was designed around real people using it — that's product thinking your users benefit from directly.</p></div>
+      <div class="hire-card reveal"><div class="num">05</div><div class="icon">⚙️</div><h3>Reliable Under Pressure</h3><p>My Marine Corps background trained me to stay calm, troubleshoot systematically, and finish the job when things break.</p></div>
+      <div class="hire-card reveal reveal-d1"><div class="num">06</div><div class="icon">🚀</div><h3>Fast, Self-Driven Learner</h3><p>I close skill gaps on my own — self-taught Java, C++, JavaScript, and Unreal Engine — so ramp-up time on your stack stays short.</p></div>
     </div>
   </div>
 </section>
@@ -692,7 +872,7 @@ let mx=0,my=0,rx=0,ry=0;
 window.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
 function animRing(){ rx += (mx-rx)*0.18; ry += (my-ry)*0.18; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); }
 animRing();
-document.querySelectorAll('a,button,.skill-card,.project-card,.hire-card,.skill-tab').forEach(el=>{
+document.querySelectorAll('a,button,.skill-chip,.project-card,.hire-card,.test-item,.featured-project').forEach(el=>{
   el.addEventListener('mouseenter', ()=> ring.style.transform='translate(-50%,-50%) scale(1.7)');
   el.addEventListener('mouseleave', ()=> ring.style.transform='translate(-50%,-50%) scale(1)');
 });
@@ -721,31 +901,9 @@ drawer.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> drawer
 // ---------- reveal on scroll ----------
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{
-    if(en.isIntersecting){
-      en.target.classList.add('in');
-      if(en.target.classList.contains('skill-card')){
-        const fill = en.target.querySelector('.fill');
-        if(fill) setTimeout(()=> fill.style.width = fill.dataset.pct+'%', 150);
-      }
-    }
-  });
+  entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in'); });
 },{threshold:0.15});
 revealEls.forEach(el=> io.observe(el));
-
-// ---------- skill tabs filter ----------
-document.querySelectorAll('.skill-tab').forEach(tab=>{
-  tab.addEventListener('click', ()=>{
-    document.querySelectorAll('.skill-tab').forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    const f = tab.dataset.filter;
-    document.querySelectorAll('.skill-card').forEach(card=>{
-      const show = f==='all' || card.dataset.cat===f;
-      card.classList.toggle('hidden', !show);
-      if(show){ card.classList.add('in'); const fill=card.querySelector('.fill'); if(fill) fill.style.width = fill.dataset.pct+'%'; }
-    });
-  });
-});
 
 // ---------- back to top ----------
 document.getElementById('backToTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
