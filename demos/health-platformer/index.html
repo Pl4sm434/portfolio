@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>The Health Platformer — Mobile</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta name="theme-color" content="#0a0e0d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Health Platformer">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+<div id="app">
+
+  <!-- ================= HOME ================= -->
+  <section class="screen active" id="screen-home">
+    <div class="home-inner">
+      <div class="tag">MOBILE PORT — iOS / ANDROID</div>
+      <div class="title-xl">THE HEALTH<br><span class="accent">PLATFORMER</span></div>
+      <div class="subtitle">You are the health bar. Team Noobs // Build 2026.07</div>
+
+      <button class="btn primary" id="btn-continue" style="display:none;">
+        <span id="continue-label">CONTINUE — LVL 1</span><span class="arrow">→</span>
+      </button>
+      <button class="btn" id="btn-newgame"><span>NEW GAME</span><span class="arrow">→</span></button>
+      <button class="btn" id="btn-levels-home"><span>LEVEL SELECT</span><span class="arrow">→</span></button>
+      <button class="btn" id="btn-more-home"><span>MORE</span><span class="arrow">→</span></button>
+      <button class="btn" id="btn-settings-home"><span>SETTINGS</span><span class="arrow">→</span></button>
+
+      <div class="status-strip">
+        <span>Deaths <b id="stat-deaths-home">0</b></span>
+        <span>Resets <b id="stat-resets-home">0</b></span>
+        <span>Best time <b id="stat-best-home">—</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LEVEL SELECT ================= -->
+  <section class="screen" id="screen-levels">
+    <div class="topbar">
+      <button class="iconbtn" data-back="screen-home">‹</button>
+      <h2>Select Level</h2>
+    </div>
+    <div class="grid-wrap">
+      <div class="level-grid" id="level-grid"></div>
+    </div>
+  </section>
+
+  <!-- ================= SETTINGS ================= -->
+  <section class="screen" id="screen-settings">
+    <div class="topbar">
+      <button class="iconbtn" data-back="screen-home">‹</button>
+      <h2>Settings</h2>
+    </div>
+    <div class="content-scroll">
+      <div class="card">
+        <h4>Background</h4>
+        <div class="bg-swatches" id="bg-swatches"></div>
+      </div>
+      <div class="card">
+        <h4>Controls</h4>
+        <div class="row"><span>Move</span><b>Left joystick</b></div>
+        <div class="row"><span>Jump</span><b>JUMP button</b></div>
+        <div class="row"><span>Dash / Gravity flip</span><b>DASH button + direction</b></div>
+        <div class="row"><span>Interact</span><b>E button (near signs)</b></div>
+        <div class="row"><span>Switch item</span><b>1 / 2 / 3 side buttons</b></div>
+      </div>
+      <div class="card">
+        <h4>Progress</h4>
+        <button class="btn" id="btn-reset-progress" style="border-color:var(--danger);"><span>RESET PROGRESS</span><span class="arrow">⟲</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MORE ================= -->
+  <section class="screen" id="screen-more">
+    <div class="topbar">
+      <button class="iconbtn" data-back="screen-home">‹</button>
+      <h2>More</h2>
+    </div>
+    <div class="tab-row">
+      <button class="tab-btn active" data-tab="tab-howto">How To Play</button>
+      <button class="tab-btn" data-tab="tab-stats">Stats</button>
+      <button class="tab-btn" data-tab="tab-credits">Credits</button>
+      <button class="tab-btn" data-tab="tab-ach">Achievements</button>
+    </div>
+    <div class="content-scroll">
+      <div class="more-panel active" id="tab-howto">
+        <div class="card">
+          <h4>The Basics</h4>
+          <div class="instr-line"><b>You are the health bar.</b> Your hitbox height equals your current health — the lower your health, the smaller (and lighter) you are.</div>
+          <div class="instr-line">Lower weight means a <b>higher jump</b>. Health kits heal you but shrink the margin for error near lava.</div>
+        </div>
+        <div class="card">
+          <h4>Powerups</h4>
+          <div class="instr-line"><b>Dash</b> — hold a direction + DASH to burst that way. Refills on landing.</div>
+          <div class="instr-line"><b>Wall Jump</b> — stick to a wall by holding toward it while falling, then JUMP off.</div>
+          <div class="instr-line"><b>Anti-Gravity</b> — DASH button while standing still flips gravity, letting you walk on ceilings.</div>
+        </div>
+        <div class="card">
+          <h4>Hazards</h4>
+          <div class="instr-line"><b>Lava</b> drains health over time (hold JUMP to "swim" upward through it). <b>Health Gates</b> only open once your health passes a threshold. <b>Shooters</b> fire projectiles that cost 10 HP and grant brief invincibility.</div>
+        </div>
+      </div>
+      <div class="more-panel" id="tab-stats">
+        <div class="stat-grid">
+          <div class="stat-box"><div class="num" id="stat-deaths">0</div><div class="lbl">Deaths</div></div>
+          <div class="stat-box"><div class="num" id="stat-resets">0</div><div class="lbl">Resets</div></div>
+          <div class="stat-box"><div class="num" id="stat-best">—</div><div class="lbl">Best Time</div></div>
+          <div class="stat-box"><div class="num" id="stat-level">1</div><div class="lbl">Current Level</div></div>
+        </div>
+      </div>
+      <div class="more-panel" id="tab-credits">
+        <div class="card">
+          <h4>Credits</h4>
+          <div class="credit-line">Original game &amp; level design — <b style="color:var(--text)">Team Noobs</b></div>
+          <div class="credit-line">Mobile port &amp; UI — built from the original Java source</div>
+          <div class="credit-line">20 rooms, 3 powerups, 22 checkpoints</div>
+        </div>
+      </div>
+      <div class="more-panel" id="tab-ach">
+        <div class="card">
+          <h4>Achievements</h4>
+          <div class="ach-row" id="ach-dash"><span class="ach-dot"></span> Got the Dash powerup</div>
+          <div class="ach-row" id="ach-wj"><span class="ach-dot"></span> Got the Wall Jump powerup</div>
+          <div class="ach-row" id="ach-grav"><span class="ach-dot"></span> Got the Anti-Gravity powerup</div>
+          <div class="ach-row" id="ach-finish"><span class="ach-dot"></span> Finished the game</div>
+          <div class="ach-row" id="ach-noreset"><span class="ach-dot"></span> Reached a checkpoint without dying</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GAME ================= -->
+  <section class="screen" id="screen-game">
+    <div class="game-stage">
+      <canvas id="gameCanvas" width="650" height="480"></canvas>
+
+      <div class="hud-topbar">
+        <button class="iconbtn" id="btn-pause">❚❚</button>
+        <div class="pill">LVL <span id="hud-level">1</span></div>
+      </div>
+
+      <div class="touch-controls">
+        <div class="dpad" id="dpad">
+          <div class="dpad-btn dpad-up" id="btn-up">▲</div>
+          <div class="dpad-btn dpad-left" id="btn-left">◀</div>
+          <div class="dpad-btn dpad-right" id="btn-right">▶</div>
+          <div class="dpad-btn dpad-down" id="btn-down">▼</div>
+        </div>
+        <div class="action-buttons">
+          <div class="round-btn" id="btn-dash">DASH</div>
+          <div class="round-btn" id="btn-jump">JUMP</div>
+        </div>
+        <div class="mini-buttons">
+          <div class="mini-btn" id="btn-item1">1</div>
+          <div class="mini-btn" id="btn-item2">2</div>
+          <div class="mini-btn" id="btn-item3">3</div>
+        </div>
+        <div class="interact-btn" id="btn-interact">E — INTERACT</div>
+        <div class="dialog-next-btn" id="btn-next">TAP TO CONTINUE</div>
+      </div>
+
+      <div id="overlay-pause">
+        <div class="pause-card">
+          <h3>Paused</h3>
+          <button class="btn primary" id="btn-resume"><span>RESUME</span><span class="arrow">▶</span></button>
+          <button class="btn" id="btn-restart-checkpoint"><span>RESTART AT CHECKPOINT</span><span class="arrow">⟲</span></button>
+          <button class="btn" id="btn-quit-home"><span>QUIT TO HOME</span><span class="arrow">⏻</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rotate-hint">
+    <div style="font-size:28px;">⟲</div>
+    <div>Rotate your device — this game plays in landscape.</div>
+  </div>
+
+</div>
+
+<script src="levels.js"></script>
+<script src="game.js"></script>
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+}
+</script>
+</body>
+</html>

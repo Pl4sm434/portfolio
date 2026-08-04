@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resume ↔ Job Description Matcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --border:#262b35; --accent:#4f7cff; --green:#34d399; --yellow:#eab308; --red:#ef4444; --text:#e7e9ee; --muted:#8b93a3; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: 'Inter', system-ui, sans-serif; background:var(--bg); color:var(--text); }
+  header { padding: 40px 24px 16px; max-width: 900px; margin: 0 auto; }
+  header h1 { font-size: 28px; font-weight: 800; margin: 0 0 6px; }
+  header p { color: var(--muted); margin: 0; font-size: 15px; line-height: 1.5; }
+  main { max-width: 900px; margin: 0 auto; padding: 16px 24px 40px; }
+  .cols { display: flex; gap: 16px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 280px; }
+  textarea {
+    width: 100%; height: 220px; background: #0d0f14; border: 1px solid var(--border);
+    color: var(--text); border-radius: 10px; padding: 14px; font-family: inherit;
+    font-size: 13.5px; resize: vertical;
+  }
+  textarea:focus { outline: none; border-color: var(--accent); }
+  label { font-size: 13px; color: var(--muted); display: block; margin-bottom: 6px; font-weight: 600; }
+  button {
+    background: var(--accent); color: white; border: none; padding: 13px 22px; border-radius: 8px;
+    cursor: pointer; font-weight: 700; margin-top: 16px; font-family: inherit; font-size: 14px;
+    transition: filter 0.15s;
+  }
+  button:hover { filter: brightness(1.1); }
+  #errorMsg { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
+  .result { margin-top: 24px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; display: none; }
+  .score-row { display: flex; align-items: baseline; gap: 10px; }
+  .score { font-size: 36px; font-weight: 800; }
+  .score-label { color: var(--muted); font-size: 13px; }
+  .bar { height: 8px; background: #0d0f14; border-radius: 999px; overflow: hidden; margin: 12px 0 4px; }
+  .bar-fill { height: 100%; border-radius: 999px; width: 0%; transition: width 0.4s ease; }
+  .tag { display: inline-block; font-size: 12px; padding: 4px 10px; border-radius: 999px; margin: 3px 4px 0 0; }
+  .tag.match { background: rgba(52,211,153,0.15); color: var(--green); }
+  .tag.missing { background: rgba(239,68,68,0.15); color: var(--red); }
+  h4 { margin: 18px 0 6px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📄 Resume ↔ Job Description Matcher</h1>
+  <p>Paste your resume and a job posting — see keyword overlap and what's missing, ranked by how often it shows up in the posting.</p>
+</header>
+<main>
+  <div class="cols">
+    <div class="col">
+      <label>Your Resume Text</label>
+      <textarea id="resume" placeholder="Paste your resume text here..."></textarea>
+    </div>
+    <div class="col">
+      <label>Job Description</label>
+      <textarea id="jobdesc" placeholder="Paste the job description here..."></textarea>
+    </div>
+  </div>
+  <button id="analyzeBtn">Analyze Match</button>
+  <div id="errorMsg">Paste both a resume and a job description first.</div>
+
+  <div class="result" id="result">
+    <div class="score-row">
+      <div class="score" id="scoreText">0%</div>
+      <div class="score-label">keyword overlap</div>
+    </div>
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    <h4>Matched Keywords</h4>
+    <div id="matched"></div>
+    <h4>Missing From Your Resume (most frequent first)</h4>
+    <div id="missing"></div>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
