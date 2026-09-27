@@ -1,0 +1,6 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CSV Order Processor - Interactive Demo</title><link rel="stylesheet" href="../demo.css"><main><small>CSV ORDER PROCESSOR / BROWSER DEMO</small><h1>From rows to a useful answer.</h1><p>Edit the daily quantities and calculate the total orders and best-selling burger. This browser adaptation follows the original Python program's calculation logic.</p><label for="csv">Order CSV · Burger followed by daily quantities</label><textarea id="csv" spellcheck="false" maxlength="20000">Burger,Day1,Day2,Day3,Day4
+1,10,12,14,9
+2,8,7,15,10
+3,5,6,4,8
+4,9,11,10,7
+5,3,5,6,4</textarea><div class="actions"><button id="calculate">Calculate orders</button><button class="secondary" id="reset">Reset sample</button></div><div id="result" role="status" aria-live="polite">Sample data is ready. Try changing a quantity.</div><p class="note">Uses fictional sample orders. Invalid quantities count as zero and are reported, matching the Python tool. Duplicate burger IDs replace earlier rows. Nothing is uploaded.</p></main><script src="processor.js"></script></html>

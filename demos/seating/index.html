@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Seating Chart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <h1>Wedding Seating Chart</h1>
+      <p class="subtitle">Try Alex Morgan, Jamie Lee, or Sam Patel. Fictional demo guests.</p>
+
+      <div class="search-box">
+        <input
+          type="text"
+          aria-label="Guest name" id="searchInput"
+          placeholder="Enter first name, last name, or full name"
+        />
+        <button id="searchButton">Search</button>
+      </div>
+
+      <div aria-live="polite" id="result" class="result hidden"></div>
+
+      <div class="admin-toggle">
+        <button id="adminToggleButton" type="button">Manage guest list</button>
+      </div>
+
+      <div id="adminSection" class="admin-section hidden">
+        <h2>Add / Manage Guests</h2>
+        <p class="admin-note">
+          Changes last only while this demo is open.
+        </p>
+
+        <form id="addGuestForm" class="add-guest-form">
+          <input type="text" id="firstNameInput" placeholder="First name" required />
+          <input type="text" id="lastNameInput" placeholder="Last name" required />
+          <input type="text" id="tableInput" placeholder="Table (e.g. Table 3)" required />
+          <button type="submit">Add Guest</button>
+        </form>
+
+        <ul id="guestList"></ul>
+
+        <button id="clearAllButton" type="button" class="clear-button">
+          Clear all guests
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>W0ND3R Guard - Interactive Demo</title><link rel="stylesheet" href="../demo.css"><main><small>W0ND3R GUARD / TRY THE SCANNER</small><h1>Find the problem before it ships.</h1><p>Edit the Lua sample, then scan it. The project's five static-analysis rules run entirely in this browser; no code is executed or uploaded.</p><label for="code">Lua snippet</label><textarea id="code" spellcheck="false" maxlength="20000">local api_key = "demo-example-key"
+RegisterCommand("admin", function(source, args)
+  GiveWeaponToPed(GetPlayerPed(source), "WEAPON_PISTOL", 50, false, true)
+end)
+</textarea><div class="actions"><button id="scan">Scan snippet</button><button class="secondary" id="safe">Try a clean sample</button></div><div id="result" role="status" aria-live="polite">Ready when you are.</div><p class="note">Static analysis can miss issues and flag safe code. This demo excludes the full project's AI suggestions and server features.</p></main><script src="engine.js"></script><script>
+const input=document.querySelector('#code'),result=document.querySelector('#result');
+document.querySelector('#safe').onclick=()=>{input.value='local greeting = "Hello, world!"\nprint(greeting)';result.textContent='Clean sample loaded. Run the scanner.'};
+document.querySelector('#scan').onclick=()=>{try{const findings=window.scanLua(input.value);result.replaceChildren();const title=document.createElement('strong');title.textContent=findings.length?findings.length+' finding(s) to review':'No issues found by these rules.';result.append(title);findings.forEach(f=>{const p=document.createElement('p');p.textContent=f.severity.toUpperCase()+' · Line '+f.line+' · '+f.title;result.append(p)})}catch(e){result.textContent='Could not scan: '+e.message}};
+</script></html>
